@@ -1,7 +1,7 @@
 // creo i collegamenti al DOM
 const score = document.getElementById("score");
-const gridLevelSelect = document.getElementById("gridLevel");
 const gridContainerDom = document.getElementById("grid-container");
+// variabile di controllo fine partita
 let gameOver;
 
 const generateGridBtn = document.getElementById("generateGrid");
@@ -13,6 +13,7 @@ generateGridBtn.addEventListener('click',
         score.innerHTML = 0;
         gameOver = false;
 
+        const gridLevelSelect = document.getElementById("gridLevel");
         // il value avrà valore (Easy:10/Hard:9/Crazy:7) ossia elementi per riga/colonna
         let gridLevel = parseInt(gridLevelSelect.value);
 
@@ -35,6 +36,7 @@ function generateGrid (totalSquares,rows,cols){
         // invoco la funzione per generare il quadrato
         const square = generateSquare(rows,cols);
 
+        // stampo il numero al quadrato
         square.append(generateSquareText(i));
 
         // aggiungo la classe mina
@@ -45,12 +47,13 @@ function generateGrid (totalSquares,rows,cols){
         // aggiungo un eventListener al quadrato
         square.addEventListener('click',
             function(){
-                // procedo solo se il quadrato non è stato rivelato
+                // procedo solo se il quadrato non è stato rivelato e la partita non è finita
                 if (!this.classList.contains('revealed') && !gameOver ){
+                    // controllo superato rivelo il quadratino
                     this.classList.add('revealed');
 
                     if (this.classList.contains('mine')){
-                        // il quadratino è una mina: gameOver
+                        // CASO 1: quadratino è una mina, GAME OVER
                         gameOver = true;
                         score.innerHTML += "<br>GAME OVER"
                         // scopro tutte le mine 
@@ -61,10 +64,11 @@ function generateGrid (totalSquares,rows,cols){
                             }
                         };
                     } else {
+                        // CASO 2 : quadratino vuoto
                         let scoreInt = parseInt(score.innerHTML);
                         // aggiungo +1 al punteggio
                         score.innerHTML = ++scoreInt;
-                        // verifico se ho cliccato su tutti i quadratini corretti
+                        // verifica WIN
                         if (scoreInt == (totalSquares - 16)){
                             gameOver = true;
                             score.innerHTML += "<br>WINNER"
