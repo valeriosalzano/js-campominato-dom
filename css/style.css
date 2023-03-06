@@ -5,7 +5,7 @@
 }
 
 html {
-    color: white;
+    color: black;
     font-family: sans-serif;
 }
 body {
@@ -14,6 +14,7 @@ body {
 
 header {
     border-bottom: 3px solid white;
+    background-color: lightskyblue;
 
 }
 .header-container {
@@ -27,8 +28,10 @@ h1 {
 }
 
 .score-container {
+    width: 100%;
     font-size: 1.5rem;
     min-width: 160px;
+    text-align: center;
 }
 
 main {
@@ -43,10 +46,10 @@ main {
 
 .input-group {
     display: inline-block;
-    border: 1px solid white;
-    border-radius: 0.5rem;
+    border-radius: 1.5rem;
     padding: 0 1.5rem;
     font-size: 1.2rem;
+    background-color: white;
     
 }
 
@@ -55,8 +58,7 @@ main {
     margin: 1rem;
     border: 1px solid white;
     border-radius: 1.5rem;
-    color: white;
-    background-color: black;
+    background-color: white;
     cursor: pointer;
     font-size: 1.2rem;
 }
@@ -64,10 +66,8 @@ main {
 select {
     border: none;
     height: 100%;
-    border-left: 1px solid white;
     padding: 0.5rem 1.5rem;
-    background-color: black;
-    color: white;
+    background-color: transparent;
     font-size: 1.2rem;    
 }
 
@@ -76,7 +76,7 @@ label {
 }
 
 .btn:hover{
-    background-color: lightgray;
+    background-color: rgb(236, 234, 234);
     color: black;
 }
 
@@ -109,12 +109,14 @@ label {
 }
 
 .square.revealed {
-    background-color: navy;
-    color: white;
+    background-color: lightskyblue;
+    color: black;
+    font-size: 1.2rem;
 }
 
 .square.revealed.mine {
     background-color:darkred;
+    color: white;
 }
 
 .square.revealed .square-text {
@@ -156,6 +158,6 @@ footer p {
 
     .btns-container {
         text-align: right;
-        min-width: 400px;
+        min-width: 450px;
     }
 }

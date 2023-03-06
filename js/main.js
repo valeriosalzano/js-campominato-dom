@@ -30,7 +30,7 @@ function generateGrid (totalSquares,rows,cols){
     grid.id = "grid";
 
     // genero la lista dei numeri che saranno mine
-    let minesList = createMinesList(totalSquares);
+    let minesList = createMinesList(totalSquares,16);
 
     for (let i=1; i<=totalSquares; i++){
         // invoco la funzione per generare il quadrato
@@ -55,12 +55,14 @@ function generateGrid (totalSquares,rows,cols){
                     if (this.classList.contains('mine')){
                         // CASO 1: quadratino è una mina, GAME OVER
                         gameOver = true;
-                        score.innerHTML += "<br>GAME OVER"
-                        // scopro tutte le mine 
-                        for ( i=1; i<=totalSquares; i++){
+                        score.innerHTML += "<br>GAME OVER";
+                        // scopro tutte le mine
+                        let revealedMines = 1;
+                        for ( i=1; i<=totalSquares && revealedMines<=16; i++){
                             let selectedSquare = document.querySelector(`.square:nth-of-type(${i})`);
                             if (selectedSquare.classList.contains('mine')){
                                 selectedSquare.classList.add("revealed");
+                                revealedMines++;
                             }
                         };
                     } else {
@@ -71,7 +73,7 @@ function generateGrid (totalSquares,rows,cols){
                         // verifica WIN
                         if (scoreInt == (totalSquares - 16)){
                             gameOver = true;
-                            score.innerHTML += "<br>WINNER"
+                            score.innerHTML += "<br>WINNER";
                         }
                     }
                 }
@@ -101,7 +103,7 @@ function generateSquareText (text){
 }
 
 // funziona che crea la lista di numeri che saranno mine
-function createMinesList(totalSquares){
+function createMinesList(totalSquares,totalMines){
     // creo una lista di numeri disponibili
     let numbersList = [];
     for (i=1; i<=totalSquares; i++){
@@ -109,7 +111,7 @@ function createMinesList(totalSquares){
     }
     // pesco 16 volte dalla lista
     let minesList = [];
-    for (i=0; i<16; i++){
+    for (i=0; i<totalMines; i++){
         // punto a una posizione a caso della lista
         let randomIndex = Math.floor(Math.random()*numbersList.length);
         // pesco l'elemento in quella posizione
