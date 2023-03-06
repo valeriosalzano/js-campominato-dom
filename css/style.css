@@ -1,0 +1,161 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    color: white;
+    font-family: sans-serif;
+}
+body {
+    background-color: black;
+}
+
+header {
+    border-bottom: 3px solid white;
+
+}
+.header-container {
+    text-align: center;
+    padding: 2rem 1rem 0;
+    margin: 0 auto;
+}
+h1 {
+    width: 100%;
+    font-size: 3rem;
+}
+
+.score-container {
+    font-size: 1.5rem;
+    min-width: 160px;
+}
+
+main {
+    padding: 2rem 1rem;
+    height: calc(100vh - 150px);
+}
+
+.btns-container {
+    padding: 0.5rem;
+    max-width: 100%;
+}
+
+.input-group {
+    display: inline-block;
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    padding: 0 1.5rem;
+    font-size: 1.2rem;
+    
+}
+
+.btn {
+    padding: 0.5rem 1.5rem;
+    margin: 1rem;
+    border: 1px solid white;
+    border-radius: 1.5rem;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+select {
+    border: none;
+    height: 100%;
+    border-left: 1px solid white;
+    padding: 0.5rem 1.5rem;
+    background-color: black;
+    color: white;
+    font-size: 1.2rem;    
+}
+
+label {
+    padding-right: 1rem;
+}
+
+.btn:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+#grid-container {
+    margin: 0 auto;
+    height: 100%;
+    max-width: 90%;
+    aspect-ratio: 1/1;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 3px solid white;
+}
+
+#grid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+}
+
+.square-text {
+    display: none;
+}
+
+.square.revealed {
+    background-color: navy;
+    color: white;
+}
+
+.square.revealed.mine {
+    background-color:darkred;
+}
+
+.square.revealed .square-text {
+    display: block;
+}
+
+footer {
+    border-top: 3px solid white;
+    height: 70px;
+    line-height: 2rem;
+    padding: 0.5rem;
+    background-color: lightskyblue;
+}
+
+footer p {
+    max-width: 1170px;
+    margin: 0 auto;
+    color: black;
+}
+
+@media screen and (min-width: 768px){
+    header {
+        height: 80px;
+    }
+    .header-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        max-width: 1170px;
+    }
+    
+    h1 {
+        text-align: left;
+        display: inline-block;
+    }
+
+    .btns-container {
+        text-align: right;
+        min-width: 400px;
+    }
+}
